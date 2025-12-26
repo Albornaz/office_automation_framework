@@ -156,7 +156,7 @@ In most companies:
 
 ## 🖥 CLI
 
-~~bash
+~~ bash
 oaf report generate
 ~~~
 
