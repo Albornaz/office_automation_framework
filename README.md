@@ -116,8 +116,8 @@ office_automation_framework/
 └────┬────────────┘
      │
 ┌────▼──────────────┐
-│ Infrastructure   │
-│ files, mail, pdf │
+│ Infrastructure    │
+│ files, mail, pdf  │
 └──────────────────┘
 ~~~
 
@@ -135,7 +135,7 @@ office_automation_framework/
                │ CLI / Reports
                ▼
 ┌─────────────────────────────────────┐
-│   Office Automation Framework (OAF)  │
+│   Office Automation Framework (OAF) │
 │                                     │
 │  • Data Processing                  │
 │  • Reports (HTML / PDF)             │
