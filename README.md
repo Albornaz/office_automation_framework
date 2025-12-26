@@ -491,7 +491,7 @@ mkdir office_automation_framework
 cd office_automation_framework
 ~~~
 
-##🔹 Step 2: Install dependencies
+## 🔹 Step 2: Install dependencies
 
 ~~~bash
 pip install -r requirements.txt
