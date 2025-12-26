@@ -118,7 +118,7 @@ office_automation_framework/
 ┌────▼──────────────┐
 │ Infrastructure    │
 │ files, mail, pdf  │
-└──────────────────┘
+└───────────── ─────┘
 ~~~
 
 **The project is not tied to a UI, database, or web—it can be easily integrated into any environment.**
