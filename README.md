@@ -58,6 +58,7 @@ In most companies:
 
 ## 🏗 Project architecture
 
+~~~bash
 ┌────────────┐
 │ CLI (oaf)  │
 └────┬───────┘
@@ -71,6 +72,7 @@ In most companies:
 │ Infrastructure   │
 │ files, mail, pdf │
 └──────────────────┘
+~~~
 
 **The project is not tied to a UI, database, or web—it can be easily integrated into any environment.**
 
