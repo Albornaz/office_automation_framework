@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "office-automation-framework"
 version = "1.0.0"
 description = "Framework for office automation: reports, files, email, scheduling"
-authors = [{name = "Your Name"}]
+authors = [{name = "Mscbuild"}]
 readme = "README.md"
 requires-python = ">=3.9"
 
