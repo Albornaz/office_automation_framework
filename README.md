@@ -476,3 +476,14 @@ oaf report generate
 | CLI | automation |
 | library | integration |
 | service | enterprise systems |
+
+## 🛠️ Installation
+
+~~~bash
+git clone https://github.com/mscbuild/office_automation_framework.git
+cd office_automation_framework
+~~~
+
+## 📜 LICENSE (MIT)
+
+MIT License
