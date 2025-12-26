@@ -484,6 +484,112 @@ git clone https://github.com/mscbuild/office_automation_framework.git
 cd office_automation_framework
 ~~~
 
+## 🔹 Step 1: Clone or create a folder
+
+~~~bash
+mkdir office_automation_framework
+cd office_automation_framework
+~~~
+
+##🔹 Step 2: Install dependencies
+
+~~~bash
+pip install -r requirements.txt
+~~~
+
+## ⚠️ Additional for PDF (WeasyPrint) Windows
+
+~~~bash
+pip install weasyprint
+~~~
+
+## 🍎 macOS
+
+~~~bash
+brew install cairo pango gdk-pixbuf libffi
+pip install weasyprint
+~~~
+
+## 🐧 Ubuntu / Debian
+
+~~~bash
+sudo apt install libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0
+pip install weasyprint
+~~~
+
+## ▶ 2️⃣ Application (launch)
+
+📊 Preparing Input Data
+
+Create a file:
+~~~bash
+data/sales.xlsx
+~~~
+
+Columns:
+~~~bash
+manager | amount
+~~~
+
+## 🚀 Launch a daily report
+
+~~~bash
+python examples/daily_financial_report.py
+~~~
+
+## 📁 Result:
+
+~~~bash
+output/
+├── summary.xlsx
+└── report.pdf
+~~~
+
+**📧 The letter is sent automatically.**
+
+## 🧪 3️⃣ Testing (simple)
+
+🔹 Quick manual test
+~~~bash
+python -c "from oaf.data.loader import DataLoader; print(DataLoader)"
+~~~
+
+## 🔹 Testing report generation without email
+
+(Temporarily comment out MailSender in daily_financial_report.py)
+~~~bash
+python examples/daily_financial_report.py
+~~~
+
+**Expected:**
+
+- summary.xlsx
+
+- report.pdf
+
+## 🧪 4️⃣ Automated tests (optional, recommended)
+
+Installing pytest
+~~~bash
+pip install pytest
+~~~
+
+Running tests
+~~~bash
+pytest
+~~~
+
+## 🔄 5️⃣ Typical developer workflow
+
+~~~bash
+git pull
+source venv/bin/activate
+pip install -r requirements.txt
+pytest
+python examples/daily_financial_report.py
+~~~
+ 
+
 ## 📜 LICENSE (MIT)
 
 MIT License
