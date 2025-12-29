@@ -39,3 +39,4 @@ def test_pivot():
     assert pivoted.loc["Fruit", "Banana"] == 20
     assert pivoted.loc["Vegetable", "Carrot"] == 15
     assert pivoted.loc["Vegetable", "Broccoli"] == 5
+
