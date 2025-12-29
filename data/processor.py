@@ -27,5 +27,3 @@ class DataProcessor:
         result = result.merge(original_names, on='manager_lower', how='left')
         return result[['manager', 'total_sales']]
 
-
-
