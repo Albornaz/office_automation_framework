@@ -10,9 +10,6 @@ authors = [{name = "Mscbuild"}]
 readme = "README.md"
 requires-python = ">=3.9"
 
-[project.scripts]
-oaf = "oaf.cli.main:main"
-
 dependencies = [
     "pandas",
     "openpyxl",
@@ -20,3 +17,11 @@ dependencies = [
     "weasyprint",
     "schedule"
 ]
+
+[project.scripts]
+oaf = "oaf.cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["oaf*"]
+
