@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Financial report</title>
+</head>
+<body>
+<h1>Sales report</h1>
+<table border="1" cellpadding="5">
+<tr>
+    <th>Manager</th>
+    <th>Sales</th>
+</tr>
+{% for row in data %}
+<tr>
+    <td>{{ row.manager }}</td>
+    <td>{{ row.total_sales }}</td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>
