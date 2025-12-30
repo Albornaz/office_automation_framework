@@ -15,6 +15,7 @@ dependencies = [
     "openpyxl",
     "jinja2",
     "weasyprint",
+    "pdfkit",
     "schedule"
 ]
 
