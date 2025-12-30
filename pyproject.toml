@@ -1,11 +1,19 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "office-automation-framework"
 version = "0.1.0"
-
+description = "Python framework for office automation"
+authors = [{ name = "Mscbuild" }]
 dependencies = [
   "pandas",
   "jinja2",
   "schedule",
-  "pdfkit"
+  "pytest"
 ]
+
+[project.scripts]
+oaf = "oaf.cli:main"
 
