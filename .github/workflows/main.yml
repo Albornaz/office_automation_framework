@@ -1,0 +1,9 @@
+name: CI Example
+on: [push] # Запуск при каждом пуше
+jobs:
+  build:
+    runs-on: ubuntu-latest # Среда выполнения
+    steps:
+      - uses: actions/checkout@v4 # Копирование кода репозитория
+      - name: Run a script
+        run: echo "Hello, GitHub Actions 2025!"
