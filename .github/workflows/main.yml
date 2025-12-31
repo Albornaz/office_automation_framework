@@ -1,9 +1,41 @@
-name: CI Example
-on: [push] # Запуск при каждом пуше
+name: Python CI
+
+# Запуск workflow при пуше или создании pull request
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
   build:
-    runs-on: ubuntu-latest # Среда выполнения
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4 # Копирование кода репозитория
-      - name: Run a script
-        run: echo "Hello, GitHub Actions 2025!"
+      # Клонируем репозиторий
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Устанавливаем Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # Устанавливаем зависимости
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # Запускаем тесты (если они есть)
+      - name: Run tests
+        run: |
+          echo "Запуск тестов..."
+          # Пример: pytest
+          if [ -f pytest.ini ] || [ -d tests ]; then
+            pip install pytest
+            pytest
+          fi
