@@ -9,7 +9,6 @@ description = "Framework for office automation: reports, files, email, schedulin
 authors = [{name = "Mscbuild"}]
 readme = "README.md"
 requires-python = ">=3.9"
-
 dependencies = [
     "pandas",
     "openpyxl",
@@ -19,10 +18,12 @@ dependencies = [
     "schedule"
 ]
 
+[project.optional-dependencies]
+dev = ["pytest"]
+
 [project.scripts]
 oaf = "oaf.cli.main:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["oaf*"]
-
