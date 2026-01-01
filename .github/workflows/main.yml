@@ -1,10 +1,65 @@
-name: CI Example
-on: [push] # Запуск при каждом пуше
-jobs:
-  build:
-    runs-on: ubuntu-latest # Среда выполнения
-    steps:
-      - uses: actions/checkout@v4 # Копирование кода репозитория
-      - name: Run a script
-        run: echo "Hello, GitHub Actions 2025!"
+name: CI
 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ "3.9", "3.10", "3.11", "3.12" ]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      - name: Install system dependencies (for WeasyPrint / wkhtmltopdf)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-0 libwebkit2gtk-4.0-37 libx11-xcb1 \
+            libxcomposite1 libxdamage1 libxss1 libxtst6 libnss3 libasound2 libatk1.0-0 \
+            libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxrandr2
+
+      - name: Install wkhtmltopdf (required by pdfkit)
+        run: |
+          sudo apt-get install -y wkhtmltopdf
+
+      - name: Install project dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev]
+
+      - name: Check importability
+        run: |
+          python -c "import oaf; print(oaf.__version__ if hasattr(oaf, '__version__') else 'OK')"
+
+      - name: Run CLI help (smoke test)
+        run: |
+          oaf --help
+
+      - name: Run tests with pytest
+        run: |
+          pip install pytest
+          pytest tests/ -v
+
+      # Опционально: проверка форматирования и линтинга (если вы их используете)
+      # Раскомментируйте, если добавите black/ruff/flake8 в зависимости для dev
+      # - name: Check formatting with black
+      #   run: |
+      #     pip install black
+      #     black --check .
+      #
+      # - name: Lint with ruff
+      #   run: |
+      #     pip install ruff
+      #     ruff check .
