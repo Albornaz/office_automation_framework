@@ -11,55 +11,50 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ "3.9", "3.10", "3.11", "3.12" ]
+        python-version: [ "3.9", "3.10", "3.11", "3.12" ]  # тестирование на нескольких версиях
 
     steps:
+      # 1. Клонируем репозиторий
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 2. Устанавливаем Python
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          cache: 'pip'
+          cache: 'pip'  # кэширует зависимости pip
 
-      - name: Install system dependencies (for WeasyPrint / wkhtmltopdf)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libgtk-3-0 libwebkit2gtk-4.0-37 libx11-xcb1 \
-            libxcomposite1 libxdamage1 libxss1 libxtst6 libnss3 libasound2 libatk1.0-0 \
-            libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxrandr2
-
-      - name: Install wkhtmltopdf (required by pdfkit)
-        run: |
-          sudo apt-get install -y wkhtmltopdf
-
-      - name: Install project dependencies
+      # 3. Устанавливаем зависимости
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e .[dev]
+          # Если используете requirements.txt:
+          pip install -r requirements.txt
+          # ИЛИ если используете pyproject.toml (рекомендуется):
+          # pip install -e .[dev]  # или pip install .
 
-      - name: Check importability
+      # 4. Проверка форматирования (пример с black)
+      - name: Check code formatting with black
         run: |
-          python -c "import oaf; print(oaf.__version__ if hasattr(oaf, '__version__') else 'OK')"
+          pip install black
+          black --check .
 
-      - name: Run CLI help (smoke test)
+      # 5. Линтинг (пример с ruff или flake8)
+      - name: Lint with ruff
         run: |
-          oaf --help
+          pip install ruff
+          ruff check .
 
+      # 6. Запуск тестов
       - name: Run tests with pytest
         run: |
-          pip install pytest
-          pytest tests/ -v
+          pip install pytest pytest-cov
+          pytest --cov=your_package --cov-report=xml
 
-      # Опционально: проверка форматирования и линтинга (если вы их используете)
-      # Раскомментируйте, если добавите black/ruff/flake8 в зависимости для dev
-      # - name: Check formatting with black
-      #   run: |
-      #     pip install black
-      #     black --check .
-      #
-      # - name: Lint with ruff
-      #   run: |
-      #     pip install ruff
-      #     ruff check .
+      # 7. (Опционально) Загрузка отчёта о покрытии в Codecov
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage.xml
+          flags: unittests
