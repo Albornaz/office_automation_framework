@@ -6,8 +6,7 @@
  <img width="86" height="18" alt="mscbuild" src="https://github.com/user-attachments/assets/4b119585-4f1f-41b8-9eee-d87977c8e341" />
   ![](https://komarev.com/ghpvc/?username=mscbuild) 
  ![](https://img.shields.io/github/license/mscbuild/office_automation_framework) 
- ![](https://img.shields.io/github/languages/code-size/office_automation_framework)
-![](https://img.shields.io/badge/PRs-Welcome-green)
+ ![](https://img.shields.io/badge/PRs-Welcome-green)
 ![](https://img.shields.io/badge/code%20style-python-green)
 ![](https://img.shields.io/github/stars/mscbuild)
 ![](https://img.shields.io/badge/Topic-Github-lighred)
