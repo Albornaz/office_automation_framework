@@ -2,8 +2,8 @@
 ## 📦 Office Automation Framework (OAF)
 
 ![CI Example](https://github.com/mscbuild/office_automation_framework/actions/workflows/main.yml/badge.svg) 
- 
-<img width="96" height="20" alt="image" src="https://github.com/user-attachments/assets/bfd2183b-bf77-456f-ba40-da387be03ed1" />
+ <img width="97" height="20" alt="image" src="https://github.com/user-attachments/assets/fd221c47-2431-4b99-bbd0-3eb867a4edec" />
+
  
  
 
