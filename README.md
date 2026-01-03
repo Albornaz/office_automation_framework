@@ -4,6 +4,14 @@
 ![CI Example](https://github.com/mscbuild/office_automation_framework/actions/workflows/main.yml/badge.svg) 
  <img width="97" height="20" alt="mscbuild" src="https://github.com/user-attachments/assets/fd221c47-2431-4b99-bbd0-3eb867a4edec" />
  <img width="86" height="18" alt="mscbuild" src="https://github.com/user-attachments/assets/4b119585-4f1f-41b8-9eee-d87977c8e341" />
+  ![](https://komarev.com/ghpvc/?username=mscbuild) 
+ ![](https://img.shields.io/github/license/mscbuild/sentinel-secrets-) 
+ ![](https://img.shields.io/github/languages/code-size/mscbuild/sentinel-secrets-)
+![](https://img.shields.io/badge/PRs-Welcome-green)
+![](https://img.shields.io/badge/code%20style-python-green)
+![](https://img.shields.io/github/stars/mscbuild)
+![](https://img.shields.io/badge/Topic-Github-lighred)
+![](https://img.shields.io/website?url=https://github.com/mscbuild)
 
 
 
