@@ -3,7 +3,10 @@
 
 [![CI Example](https://github.com/mscbuild/office_automation_framework/actions/workflows/main.yml/badge.svg)](https://github.com/mscbuild/office_automation_framework/actions/workflows/main.yml)
 
-![Python versions](https://img.shields.io/pypi/pyversions/office-automation-framework)
+[![CI](https://github.com/Mscbuild/office_automation_framework/actions/workflows/ci.yml/badge.svg?branch=main)](
+https://github.com/Mscbuild/office_automation_framework/actions/workflows/ci.yml
+)
+
 
  
 
