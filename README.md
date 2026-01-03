@@ -1,7 +1,7 @@
  
 ## 📦 Office Automation Framework (OAF)
 
-[![CI Example](https://github.com/mscbuild/office_automation_framework/actions/workflows/main.yml/badge.svg)] 
+![CI Example](https://github.com/mscbuild/office_automation_framework/actions/workflows/main.yml/badge.svg) 
  
 https://img.shields.io/badge/coverage-95%25-orange
  
