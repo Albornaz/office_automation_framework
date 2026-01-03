@@ -2,17 +2,36 @@ name: CI Example
 
 on: [push]
 
-# Ограничение прав GITHUB_TOKEN на уровне всего workflow
+# Ограничение прав GITHUB_TOKEN: разрешено только чтение контента
 permissions:
-  contents: read # Разрешаем только чтение кода (необходимо для checkout)
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # 1. Клонируем репозиторий
       - name: Check out repository code
         uses: actions/checkout@v4
       
+      # 2. Настраиваем Python (используем актуальную версию экшена)
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' # Можно указать вашу рабочую версию
+          cache: 'pip'           # Кэширование ускоряет последующие запуски
+
+      # 3. Устанавливаем зависимости
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # 4. Запускаем скрипт-приветствие
       - name: Run a script
         run: echo "Hello, GitHub Actions 2026! Permissions are secured."
 
+      # 5. Запускаем тесты
+      - name: Run tests with pytest
+        run: pytest
