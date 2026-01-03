@@ -2,6 +2,9 @@
 ## 📦 Office Automation Framework (OAF)
 
 [![CI Example](https://github.com/mscbuild/office_automation_framework/actions/workflows/main.yml/badge.svg)](https://github.com/mscbuild/office_automation_framework/actions/workflows/main.yml)
+
+![Python versions](https://img.shields.io/pypi/pyversions/office-automation-framework)
+
  
 
 The Office Automation Framework (OAF) is an extensible Python framework for automating office tasks:
