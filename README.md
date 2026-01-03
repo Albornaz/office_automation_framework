@@ -3,7 +3,8 @@
 
 ![CI Example](https://github.com/mscbuild/office_automation_framework/actions/workflows/main.yml/badge.svg) 
  <img width="97" height="20" alt="image" src="https://github.com/user-attachments/assets/fd221c47-2431-4b99-bbd0-3eb867a4edec" />
-<img width="874" height="166" alt="image" src="https://github.com/user-attachments/assets/9e43842e-728f-47e8-b1ba-1ccc21e0b49d" />
+ <img width="276" height="218" alt="image" src="https://github.com/user-attachments/assets/5eedcfb8-9a58-4448-bcad-62670f37b3cc" />
+
 
  
  
