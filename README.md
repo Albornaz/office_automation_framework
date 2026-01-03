@@ -2,8 +2,7 @@
 ## 📦 Office Automation Framework (OAF)
 
 [![CI Example](https://github.com/mscbuild/office_automation_framework/actions/workflows/main.yml/badge.svg)](https://github.com/mscbuild/office_automation_framework/actions/workflows/main.yml)
-
-![Python versions](https://img.shields.io/pypi/pyversions/office-automation-framework)
+https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
 
 
  
