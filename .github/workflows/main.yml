@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11' # Можно указать вашу рабочую версию
+          python-version: '3.12' # Можно указать вашу рабочую версию
           cache: 'pip'           # Кэширование ускоряет последующие запуски
 
       # 3. Устанавливаем зависимости
