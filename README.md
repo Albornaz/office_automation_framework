@@ -1,9 +1,7 @@
  
 ## 📦 Office Automation Framework (OAF)
 
-![CI Example](https://github.com/mscbuild/office_automation_framework/actions/workflows/main.yml/badge.svg) 
- <img width="97" height="20" alt="mscbuild" src="https://github.com/user-attachments/assets/fd221c47-2431-4b99-bbd0-3eb867a4edec" />
- <img width="86" height="18" alt="mscbuild" src="https://github.com/user-attachments/assets/4b119585-4f1f-41b8-9eee-d87977c8e341" />
+[![Security Scan](https://github.com/mscbuild/netGuard-AI-scanner/actions/workflows/security.yml/badge.svg)](https://github.com/mscbuild/netGuard-AI-scanner/actions/workflows/security.yml)
   ![](https://komarev.com/ghpvc/?username=mscbuild) 
  ![](https://img.shields.io/github/license/mscbuild/office_automation_framework) 
  ![](https://img.shields.io/badge/PRs-Welcome-green)
